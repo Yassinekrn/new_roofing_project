@@ -1,0 +1,354 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Smooth scroll and focus states */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+}
+
+:root {
+  /* Industrial Steel Palette */
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #1a1a1a;
+  --border: #222222;
+  --text: #e8e8e8;
+  --heading: #ffffff;
+  --muted: #666666;
+  --accent: #e8e8e8;
+  --accent-strong: #ffffff;
+  --accent-line: #3a3a3a;
+  --light-bg: #f4f4f4;
+  --light-surface: #ffffff;
+  --light-border: #e0e0e0;
+  --light-muted: #888888;
+  --accent-blue: #4a6fa5;
+
+  /* Legacy mappings for Tailwind compatibility */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--accent-strong);
+  --primary-foreground: var(--bg);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--text);
+  --muted-foreground: var(--muted);
+  --accent: var(--accent-strong);
+  --accent-foreground: var(--bg);
+  --destructive: #e74c3c;
+  --destructive-foreground: var(--text);
+  --input: var(--surface);
+  --ring: var(--accent-strong);
+  --chart-1: var(--accent-blue);
+  --chart-2: #5a7fb5;
+  --chart-3: #6a8fc5;
+  --chart-4: #4a5fa5;
+  --chart-5: #3a4f95;
+  --radius: 0;
+  --sidebar: var(--bg);
+  --sidebar-foreground: var(--text);
+  --sidebar-primary: var(--accent-strong);
+  --sidebar-primary-foreground: var(--bg);
+  --sidebar-accent: var(--surface-2);
+  --sidebar-accent-foreground: var(--text);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--accent-strong);
+}
+
+.dark {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #1a1a1a;
+  --border: #222222;
+  --text: #e8e8e8;
+  --heading: #ffffff;
+  --muted: #666666;
+  --accent: #e8e8e8;
+  --accent-strong: #ffffff;
+  --accent-line: #3a3a3a;
+  --light-bg: #f4f4f4;
+  --light-surface: #ffffff;
+  --light-border: #e0e0e0;
+  --light-muted: #888888;
+  --accent-blue: #4a6fa5;
+
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--accent-strong);
+  --primary-foreground: var(--bg);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--text);
+  --muted-foreground: var(--muted);
+  --accent: var(--accent-strong);
+  --accent-foreground: var(--bg);
+  --destructive: #e74c3c;
+  --destructive-foreground: var(--text);
+  --input: var(--surface);
+  --ring: var(--accent-strong);
+  --chart-1: var(--accent-blue);
+  --chart-2: #5a7fb5;
+  --chart-3: #6a8fc5;
+  --chart-4: #4a5fa5;
+  --chart-5: #3a4f95;
+  --sidebar: var(--bg);
+  --sidebar-foreground: var(--text);
+  --sidebar-primary: var(--accent-strong);
+  --sidebar-primary-foreground: var(--bg);
+  --sidebar-accent: var(--surface-2);
+  --sidebar-accent-foreground: var(--text);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--accent-strong);
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-display: 'var(--font-display)', 'Geist', 'Geist Fallback';
+  --font-body: 'var(--font-body)', 'Geist', 'Geist Fallback';
+  --font-serif: 'var(--font-serif)', 'Geist', 'Geist Fallback';
+  --font-barlow: 'var(--font-barlow)', 'Geist', 'Geist Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Geometric Patterns */
+@layer utilities {
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .diagonal-pattern {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(0,0,0,0.015) 20px,
+      rgba(0,0,0,0.015) 21px
+    );
+  }
+
+  /* Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marqueeReverse 30s linear infinite;
+  }
+
+  .animate-count {
+    animation: countUp 2s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes marqueeReverse {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes countUp {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Card Hover — Standard Easing */
+  .card-hover {
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Image Hover Zoom */
+  .img-hover {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .img-hover:hover {
+    transform: scale(1.04);
+  }
+
+  /* Section Header Underline */
+  .section-underline::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 60px;
+    background: var(--accent);
+    margin-top: 16px;
+  }
+
+  /* Decorative Ghost Number */
+  .ghost-number {
+    position: absolute;
+    font-family: var(--font-display);
+    font-size: 200px;
+    font-weight: 900;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .reduce-motion {
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  }
+}
